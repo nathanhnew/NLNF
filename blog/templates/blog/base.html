@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>{% block title %}{% endblock title %}</title>
+
+	<!-- Bootstrap -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+	<!-- Optional Theme -->
+
+	<!-- Medium Style Editor -->
+	<script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+	
+	<!-- Font Awesome for Icons -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/11415f440f.css">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+	
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Sans" rel="stylesheet">
+
+
+</head>
+<body>
+	<!-- Navbar -->
+	<nav class="navbar navbar-toggleable-md bg-faded navbar-light navfont custom-navbar">
+		<div class="container">
+			<!-- Button for collapse and brand (Always visible elements) -->
+ 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapseMe" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    			<span class="navbar-toggler-icon"></span>
+ 			</button>
+  			<a href="{% url 'index' %}" class="navbar-brand bigbrand">Not Lost Not Found</a>
+		
+			<!-- collapsable elements -->
+  			<div class="collapse navbar-collapse" id="collapseMe">
+  				<ul class="navbar-nav ml-auto">
+  					<li class="nav-item">
+  						<a href="{% url 'post_list' %}" class="nav-link">My Blog</a>
+  					</li>
+  					<li class="nav-item">
+  						<a href="{% url 'about' %}" class="nav-link">About</a>
+  					</li>
+				</ul>
+				<ul class="navbar-nav">
+  					{% if user.is_authenticated %}
+  						<li class="nav-item">
+  							<a href="{% url 'post_new' %}" class="nav-link">New Post</a>
+  						</li>
+  						<li class="nav-item">
+  							<a href="{% url 'post_draft_list' %}" class="nav-link">Drafts</a>
+  						</li>
+  						<li class="nav-item">
+  							<a href="{% url 'logout' %}" class="nav-link">Logout</a>
+  						</li>
+					{% else %}
+						<li class="nav-item">
+  							<a href="{% url 'login' %}" class="nav-link">Log In <i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+  						</li>		
+  					{% endif %}
+  				</ul>
+  			</div>
+		</div>
+	</nav>
+
+	<!-- Content Block -->
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="blog_posts">
+					{% block content %}
+						
+					{% endblock content %}
+				</div>
+			</div>		
+		</div>
+	</div>
+
+	<!-- JS for Bootstrap -->
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+</html>

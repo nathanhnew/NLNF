@@ -31,8 +31,8 @@ urlpatterns = [
     	views.logout,
     	name='logout',
     	kwargs={'next_page':'/'}),
-    url(r'^ckeditor/',
-        include('ckeditor_uploader.urls')),
+    url(r'^redactor/',
+        include('redactor.urls')),
 ]
 
 if settings.DEBUG:

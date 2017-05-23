@@ -1,5 +1,7 @@
 from django import forms
 from blog.models import Post,Comment
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from redactor.widgets import RedactorEditor
 
 class PostForm(forms.ModelForm):
 
@@ -14,7 +16,8 @@ class PostForm(forms.ModelForm):
 		widgets = {
 			'title':forms.TextInput(attrs={'class':'titleinputclass'}),
 			'feature': forms.FileInput(attrs={'class':'featinput'}),
-			'text':forms.Textarea(attrs={'class':'contentinput'}),
+			'text':RedactorEditor()
+			# 'text':CKEditorUploadingWidget(attrs={'class':'contentinput'}),
 		}
 
 class CommentForm(forms.ModelForm):

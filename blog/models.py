@@ -4,15 +4,15 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 from django.core.urlresolvers import reverse
-from ckeditor_uploader.fields import RichTextUploadingField
+from redactor.fields import RedactorField
 
 # Create your models here.
 
 class Post(models.Model):
 	author = models.ForeignKey('auth.User')
 	title = models.CharField(max_length=200)
-	text = RichTextUploadingField()
-	feature = models.ImageField(upload_to='uploads/%Y/%m/%d',blank=True)
+	text = RedactorField(allow_image_upload=True)
+	feature = models.ImageField(upload_to='uploads/%Y/%m/%d',blank=True,null=True)
 	create_date = models.DateTimeField(default=timezone.now)
 	published_date = models.DateTimeField(blank=True,null=True)
 

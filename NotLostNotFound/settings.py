@@ -38,8 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'ckeditor',
-    'ckeditor_uploader',
+    'redactor',
 ]
 
 MIDDLEWARE = [
@@ -123,19 +122,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATICFILES_DIRS = (os.path.join(STATIC_ROOT,'redactor'),)
 
 # Media configuration
 MEDIA_ROOT = os.path.join(BASE_DIR,'blog','media')
 MEDIA_URL = '/media/'
 
-# CKEditor configuration
-CKEDITOR_UPLOAD_PATH = 'uploads/'
-CKEDITOR_IMAGE_BACKEND = "pillow"
-CKEDITOR_CONFIGS = {
-    'default': {
-        'height':800,
-    }
+REDACTOR_OPTIONS = {
+    'lang':'en',
+    'plugins': ['inlinestyle','alignment'],
 }
-
-IMAGE_QUALITY = 40
-THUMBNAIL_SIZE = (100,100)
+REDACTOR_UPLOAD = 'uploads/'
+REDACTOR_UPLOAD_HANDLER  = 'redactor.handlers.DateDirectoryUploader'
+REDACTOR_AUTH_DECORATOR = 'django.contrib.auth.decorators.login_required'

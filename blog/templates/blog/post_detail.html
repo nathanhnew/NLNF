@@ -3,13 +3,12 @@
 {% block content %}
 
 	<h1 class="postTitle">{{ post.title }}</h1>
+	<p class="postAuthor">{{ post.author }}</p>
 	{% if post.published_date %}
-
-		<div class="date postdate">{{ post.published_date|localtime }}</div>
+		<p class="date postdate">{{ post.published_date|localtime }}</p>
 	{% else %}
 		<a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-primary">Publish</a>
 	{% endif %}
-
 	<p class="postcontent">{{ post.text|safe|linebreaksbr }}</p>
 
 	{% if user.is_authenticated %}
@@ -23,7 +22,7 @@
 
 	<a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn btn-primary btn-comment">Add Comment</a>
 	</div>
-	<div class="container">
+	<div class="container" id="comments">
 		{% for comment in post.comments.all %}
 			<br>
 			{% if user.is_authenticated or comment.approved_comment %}
@@ -51,6 +50,3 @@
 	{% endif %}
 
 {% endblock content %}
-
-<!--				{% if not comment.approved_comment %}
-				{% endif %} -->

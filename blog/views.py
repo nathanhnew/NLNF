@@ -30,9 +30,18 @@ class PostDetailView(DetailView):
 
 class CreatePostView(LoginRequiredMixin,CreateView):
 	login_url = '/login/'
-	redirect_field_name = 'blog/post_detail.html'
+	redirect_field_name = 'blog/post_list.html'
 	form_class = PostForm
 	model = Post
+
+	def get_context_data(self,**kwargs):
+		c = super(CreatePostView, self).get_context_data(**kwargs)
+		user = self.request.user
+		return c
+
+	def form_valid(self, form):
+		form.instance.author = self.request.user
+		return super(CreatePostView, self).form_valid(form)
 
 class PostUpdateView(LoginRequiredMixin,UpdateView):
 	login_url = '/login/'

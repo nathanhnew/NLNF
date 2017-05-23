@@ -1,18 +1,16 @@
 from django import forms
 from blog.models import Post,Comment
-#from ckeditor.widgets import CKEditorWidget
-#from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from ckeditor.widgets import CKEditorWidget
 
 class PostForm(forms.ModelForm):
 
 	class Meta():
 		model = Post
-		fields = ('author', 'title', 'text')
+		fields = ('title', 'text')
 
 		widgets = {
-			#'media':CKEditorUploadingWidget(),
-			'title':forms.TextInput(attrs={'class':'textinputclass'}),
-			#'text':CKEditorWidget(),
+			'title':forms.TextInput(attrs={'class':'titleinputclass'}),
+			'text':CKEditorWidget(),
 		}
 
 class CommentForm(forms.ModelForm):

@@ -9,12 +9,6 @@
 	<!-- Bootstrap -->
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-
-	<!-- Optional Theme -->
-
-	<!-- Medium Style Editor -->
-	<script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 	
 	<!-- Font Awesome for Icons -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/11415f440f.css">
@@ -49,8 +43,7 @@
 				</ul>
 				<ul class="navbar-nav">
   					{% if user.is_authenticated %}
-  						<li class="nav-item">
-  							<span class="navbar-text">|</span>
+  						<li class="divider-vertical">
   						</li>
   						<li class="nav-item">
   							<a href="{% url 'post_new' %}" class="nav-link">New Post</a>

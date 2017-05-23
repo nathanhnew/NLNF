@@ -125,7 +125,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 # Media configuration
-MEDIA_ROOT = os.path.join(BASE_DIR,'blog/media')
+MEDIA_ROOT = os.path.join(BASE_DIR,'blog','media')
 MEDIA_URL = '/media/'
 
 # CKEditor configuration

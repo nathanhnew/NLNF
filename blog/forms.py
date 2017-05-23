@@ -5,11 +5,16 @@ class PostForm(forms.ModelForm):
 
 	class Meta():
 		model = Post
-		fields = ('title', 'text')
-
+		fields = ('title', 'feature', 'text')
+		labels = {
+			'title': 'Title',
+			'feature': 'Feature Image',
+			'text': 'Content',
+		}
 		widgets = {
 			'title':forms.TextInput(attrs={'class':'titleinputclass'}),
-			'text':forms.Textarea(attrs={'id':'contentinput'}),
+			'feature': forms.FileInput(attrs={'class':'featinput'}),
+			'text':forms.Textarea(attrs={'class':'contentinput'}),
 		}
 
 class CommentForm(forms.ModelForm):

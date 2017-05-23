@@ -41,6 +41,7 @@ class CreatePostView(LoginRequiredMixin,CreateView):
 
 	def form_valid(self, form):
 		form.instance.author = self.request.user
+		form.instance.title = form.instance.title.title()
 		return super(CreatePostView, self).form_valid(form)
 
 class PostUpdateView(LoginRequiredMixin,UpdateView):

@@ -131,13 +131,11 @@ MEDIA_URL = '/media/'
 # CKEditor configuration
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
-
-#New
-IMAGE_QUALITY = 40
-THUMBNAIL_SIZE = (300,300)
-
 CKEDITOR_CONFIGS = {
-    'default':{
-
+    'default': {
+        'height':800,
     }
 }
+
+IMAGE_QUALITY = 40
+THUMBNAIL_SIZE = (100,100)

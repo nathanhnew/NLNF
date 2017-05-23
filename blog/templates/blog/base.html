@@ -4,7 +4,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>{% block title %}{% endblock title %}</title>
+	<link rel="shortcut icon" type="image/png" href="{% static '/img/favicon.ico' %}" />
+	<title>{% block titleblock %}{% endblock titleblock %}</title>
 
 	<!-- Bootstrap -->
 	<!-- Latest compiled and minified CSS -->
@@ -19,6 +20,11 @@
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Sans" rel="stylesheet">
 
+	<!-- JQUERY -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+	{% block extrahead %}		
+	{% endblock extrahead %}
 
 </head>
 <body>
@@ -59,15 +65,8 @@
 
 	<!-- Content Block -->
 	<div class="content container">
-		<div class="row">
-			<div class="col-md-8">
-				<div class="blog_posts">
-					{% block content %}
-									
-					{% endblock content %}
-				</div>
-			</div>		
-		</div>
+	{% block content %}					
+	{% endblock content %}
 	</div>
 	<footer>
 		<div class="container">

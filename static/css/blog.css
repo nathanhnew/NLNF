@@ -21,23 +21,37 @@ h1{
 	margin-right: auto;
 }
 
-.postdate{
-	text-align: center;
-}
-
 .postTitle{
 	font-family: 'Montserrat', sans-serif;
 	font-size: 2em;
 	text-align: center;
 }
 
-.postcontent{
+.postAuthor{
+	font-family: 'Montserrat', sans-serif;
 	font-size: 1.25em;
+	text-align: center;
+}
+
+.postdate{
+	text-align: center;
 }
 
 .makered{
 	color:red;
 }
+
+.divider-vertical {
+    height: 50px;
+    margin: 0 9px;
+    border-right: 1px solid rgba(0,0,0,.5);
+    border-left: 1px solid #f2f2f2;
+}
+
+.right-align{
+	float:right;
+}
+
 /*.btn-comment{
 	position: absolute;
 	right:0px;

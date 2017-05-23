@@ -1,27 +1,31 @@
 {% extends "blog/base.html" %}
 {% load tz %}
+{% block titleblock %}
+{{ post.title|title }}
+{% endblock titleblock %}
 {% block content %}
 
-	<h1 class="postTitle">{{ post.title }}</h1>
+	<!-- Title/Author/Date content to display for each post -->
+	<h1 class="postTitle">{{ post.title|title }}</h1>
 	<p class="postAuthor">{{ post.author }}</p>
+	{# Add publish time if published or default to having a publish button #}
 	{% if post.published_date %}
 		<p class="date postdate">{{ post.published_date|localtime }}</p>
 	{% else %}
 		<a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-primary">Publish</a>
 	{% endif %}
-	<p class="postcontent">{{ post.text|safe|linebreaksbr }}</p>
 
+	<!-- Begin content section -->
+	<p class="postcontent">{{ post.text|safe|linebreaksbr }}</p>
+	{# Add edit and delete controls for authenticated user #}
 	{% if user.is_authenticated %}
 		<a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-primary"><i class="fa fa-pencil fa-lg pull-left" aria-hidden="true"></i>&nbsp;Edit</a>
 		<a href="{% url 'post_remove' pk=post.pk %}" class="btn btn-danger"><i class="fa fa-trash fa-lg pull-left" aria-hidden="true"></i>&nbsp;Delete</a>
 	{% endif %}
 
 	<hr>
-	<div class="container">
 	{% if post.published_date %}
-
 	<a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn btn-primary btn-comment">Add Comment</a>
-	</div>
 	<div class="container" id="comments">
 		{% for comment in post.comments.all %}
 			<br>
@@ -46,7 +50,6 @@
 			<p>No Comments</p>
 		{% endfor %}
 	</div>
-
 	{% endif %}
 
 {% endblock content %}

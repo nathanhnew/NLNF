@@ -4,7 +4,13 @@
 {{ post.title|title }}
 {% endblock titleblock %}
 {% block content %}
-
+	<!-- Feature image to display in banner across top -->
+	{% if post.feature %}
+		<img src="{{ post.feature.url }}" alt="{{ post.title|title }} Featured Image" class="featureimage" />
+	{% else %}
+		<img src="{{ static 'img/header.png' }}" alt="{{ post.title|title }} Featured Image" class="featureimage" />
+	{% endif %}
+	
 	<!-- Title/Author/Date content to display for each post -->
 	<h1 class="postTitle">{{ post.title|title }}</h1>
 	<p class="postAuthor">{{ post.author }}</p>

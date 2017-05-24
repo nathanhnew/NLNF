@@ -5,12 +5,33 @@ Drafts
 {% block content %}
 
 	{% for post in post_list %}
-		
+
+	{% if post.feature %}
 		<div class="post">
-			<p class='date'>created: {{post.create_date|date:'d-m-Y'}}</p>
-			<h1><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h1>
-			<p>{{post.text|truncatechars:200|safe|linebreaksbr}}</p>
+			<table>
+				<tr>
+					<td>
+						<img src="{{ post.feature.url }}" alt="{{ post.title }} Featured Image" class="feature-image" />
+					</td>
+					<td>
+						<h1 class="post_title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+						<p class="post_info">
+						Published: {{ post.create_date|date:"m-d-Y" }} <br />
+						{{ post.text|truncatechars:200|safe|linebreaksbr }}
+						</p>
+					</td>
+				</tr>
+			</table>
 		</div>
+	{% else %}
+		<div class="post">
+			<h1 class="post_title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+			<p class="post_info">
+			Published: {{ post.create_date|date:"m-d-Y" }} <br />
+			{{ post.text|truncatechars:200|safe|linebreaksbr }}
+			</p>
+		</div>
+	{% endif %}
 
 	{% endfor %}
 	

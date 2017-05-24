@@ -51,6 +51,9 @@ class PostUpdateView(LoginRequiredMixin,UpdateView):
 	form_class = PostForm
 	model = Post
 
+	# def get_object(self):
+	# 	return get_object_or_404(Post, pk=self.request.GET.get('id'))
+
 class PostDeleteView(LoginRequiredMixin,DeleteView):
 	model=Post
 	success_url = reverse_lazy('post_list')

@@ -15,7 +15,7 @@ class PostForm(forms.ModelForm):
 		}
 		widgets = {
 			'title':forms.TextInput(attrs={'class':'titleinputclass'}),
-			'feature': forms.FileInput(attrs={'class':'featinput'}),
+			'feature': forms.ClearableFileInput(attrs={'class':'featinput'}),
 			'text':RedactorEditor()
 			# 'text':CKEditorUploadingWidget(attrs={'class':'contentinput'}),
 		}

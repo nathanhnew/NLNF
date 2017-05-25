@@ -3,7 +3,7 @@
 	Drafts
 {% endblock titleblock %}
 {% block content %}
-
+	<div class="container">
 	{% for post in post_list %}
 
 	{% if post.feature %}
@@ -35,5 +35,5 @@
 	{% empty %}
 	<h1>No Drafts</h1>
 	{% endfor %}
-	
+	</div>
 {% endblock content %}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load base_extras %}
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -28,21 +29,22 @@
 </head>
 <body>
 	<!-- Navbar -->
-	<nav class="navbar navbar-toggleable-md bg-faded navbar-light navfont custom-navbar">
+	<nav class="navbar navbar-toggleable-sm bg-faded navbar-light navfont custom-navbar fixed-top">
 		<div class="container">
 			<!-- Button for collapse and brand (Always visible elements) -->
- 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapseMe" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+ 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapseMe" aria-controls="collapseMe" aria-expanded="false" aria-label="Toggle navigation">
     			<span class="navbar-toggler-icon"></span>
  			</button>
-  			<a href="{% url 'index' %}" class="navbar-brand bigbrand">Not Lost Not Found</a>
+  			<a href="{% url 'index' %}" class="navbar-brand bigbrand hidden-xs-down">Not Lost Not Found</a>
+  			<a href="{% url 'index' %}" class="navbar-brand bigbrand hidden-sm-up">NLNF</a>
 		
 			<!-- collapsable elements -->
   			<div class="collapse navbar-collapse" id="collapseMe">
   				<ul class="navbar-nav ml-auto">
-  					<li class="nav-item">
+  					<li class="nav-item {% active_page request 'post_list' %}">
   						<a href="{% url 'post_list' %}" class="nav-link">My Blog</a>
   					</li>
-  					<li class="nav-item">
+  					<li class="nav-item {% active_page request 'about' %}">
   						<a href="{% url 'about' %}" class="nav-link">About</a>
   					</li>
 				</ul>
@@ -50,10 +52,10 @@
   					{% if user.is_authenticated %}
   						<li class="divider-vertical">
   						</li>
-  						<li class="nav-item">
+  						<li class="nav-item {% active_page request 'post_new' %}">
   							<a href="{% url 'post_new' %}" class="nav-link">New Post</a>
   						</li>
-  						<li class="nav-item">
+  						<li class="nav-item {% active_page request 'post_draft_list' %}">
   							<a href="{% url 'post_draft_list' %}" class="nav-link">Drafts</a>
   						</li>
   					{% endif %}

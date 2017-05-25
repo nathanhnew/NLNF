@@ -7,14 +7,13 @@
 {% block content %}
 	<!-- Feature image to display in banner across top -->
 	{% if post.feature %}
-		<img src="{{ post.feature.url }}" alt="{{ post.title|title }} Featured Image" class="featureimage" />
+		<div class="featureimage" style="background-image: url({{ post.feature.url }})"></div>
 	{% else %}
-		<img src="{% static 'img/header.jpg' %}" alt="{{ post.title|title }} Featured Image" class="featureimage" />
+		<div class="featureimage" style="background-image: url({% static 'blog/img/header.jpg' %})"></div>
 	{% endif %}
 	
 	<!-- Title/Author/Date content to display for each post -->
 	<h1 class="postTitle">{{ post.title|title }}</h1>
-	<p class="postAuthor">{{ post.author }}</p>
 	{# Add publish time if published or default to having a publish button #}
 	{% if post.published_date %}
 		<p class="date postdate">{{ post.published_date|localtime }}</p>

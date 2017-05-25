@@ -1,12 +1,12 @@
 {% extends "blog/base.html" %}
 {% load staticfiles %}
 {% block titleblock %}
-New Post
+	New Post
 {% endblock titleblock %}
 {% block extrahead %}
 	<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
 	{{ block.super }}
-	<link rel="stylesheet" href="{% static 'plugins/alignment.css' %}">
+	
 {% endblock %}
 {% block content %}
 	<h1>New Post</h1>

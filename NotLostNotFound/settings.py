@@ -122,10 +122,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
-STATICFILES_DIRS = (os.path.join(STATIC_ROOT,'redactor'),os.path.join(STATIC_ROOT,'static'))
+STATICFILES_DIRS = [
+    # os.path.join(BASE_DIR,'static','redactor'),
+    os.path.join(BASE_DIR,'blog','static')
+]
 
 # Media configuration
-MEDIA_ROOT = os.path.join(BASE_DIR,'blog','media')
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
 REDACTOR_OPTIONS = {

@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 {% block titleblock %}
-Drafts
+	Drafts
 {% endblock titleblock %}
 {% block content %}
 
@@ -32,7 +32,8 @@ Drafts
 			</p>
 		</div>
 	{% endif %}
-
+	{% empty %}
+	<h1>No Drafts</h1>
 	{% endfor %}
 	
 {% endblock content %}

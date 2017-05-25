@@ -1,5 +1,7 @@
+{% load staticfiles %}
 body{
 	font-family: 'PT Sans', sans-serif;
+	background-color: #88BBD6;
 }
 
 h1{
@@ -8,11 +10,29 @@ h1{
 
 footer{
 	padding-top: 25px;
-	background-color: gray;
+}
+footer p{
+	font-size: .75em;
 }
 
+.header{
+	height:500px;
+	width:100%;
+	
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	top: 0;
+
+}
 .content{
-	background-color:red;
+	background-color: #CDCDCD;
+}
+
+.navbar{
+	margin-bottom: 0 !important;
+	background-color: #99D3DF;
 }
 
 .navfont{
@@ -21,8 +41,13 @@ footer{
 	margin-bottom: 10px;
 }
 
+.nav-link{
+	color: #FFF !important;
+}
+
 .bigbrand{
 	font-size: 1.5em;
+	color: #FFFFFF !important;
 }
 
 .centerstage{
@@ -53,10 +78,10 @@ footer{
 .divider-vertical {
     height: 50px;
     margin: 0 9px;
-    border-right: 1px solid rgba(0,0,0,.5);
-    border-left: 1px solid #f2f2f2;
+    border-right: 1px solid rgba(255,255,255,.5);
+    border-left: 1px solid #FFF;
 }
 
-.right-align{
-	float:right;
+.words{
+	text-align: justify;
 }

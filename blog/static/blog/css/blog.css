@@ -1,6 +1,3 @@
-html{
-	padding-top:70px;
-}
 body{
 	font-family: 'PT Sans', sans-serif;
 	background-color: #88BBD6;
@@ -17,17 +14,31 @@ footer p{
 	font-size: .75em;
 }
 
-.header{
-	background-image: url('/static/blog/img/header.jpg');
-	height:600px;
-	width:100%;
-	
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	top: 0;
+@media (min-width:576px){
+	.header{
+		background-image: url('/static/blog/img/header.jpg');
+		height:600px;
+		width:100%;
+		
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		top: 0;
 
+	}
+}
+
+@media (max-width: 575px){
+	.header{
+		background-image: url('/static/blog/img/header_sm.jpg');
+		height: 250px;
+		width: 100%;
+
+		background-attachment: fixed;
+		background-position: top;
+		background-repeat: no-repeat;
+	}
 }
 
 .featureimage{
@@ -38,15 +49,7 @@ footer p{
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	top: 0;
 
-}
-
-@media (max-width: 576px){
-	.header{
-		background-image: url('/static/blog/img/header_sm.jpg');
-		height: 200px;
-	}
 }
 
 .content{

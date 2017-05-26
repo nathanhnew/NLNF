@@ -15,7 +15,15 @@ from blog.models import Post, Comment
 # Create your views here.
 class IndexView(TemplateView):
 	template_name = 'index.html'
-	
+	model = Post
+
+	def get_queryset(self):
+		return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+	def get_context_data(self, **kwargs):
+		context = super(IndexView, self).get_context_data(**kwargs)
+		context['post_list'] = self.get_queryset()
+		return context
+
 class AboutView(TemplateView):
 	template_name = 'about.html'
 

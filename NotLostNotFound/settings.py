@@ -132,7 +132,7 @@ MEDIA_URL = '/media/'
 
 REDACTOR_OPTIONS = {
     'lang':'en',
-    'plugins': ['inlinestyle','alignment','source','fontcolor','fontsize','properties','counter'],
+    'plugins': ['inlinestyle','alignment','source','fontcolor','fontsize','properties','counter','figcaption'],
 }
 REDACTOR_UPLOAD = 'uploads/'
 REDACTOR_UPLOAD_HANDLER  = 'redactor.handlers.DateDirectoryUploader'

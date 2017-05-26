@@ -1,6 +1,6 @@
 body{
 	font-family: 'PT Sans', sans-serif;
-	background-color: #88BBD6;
+	background-color: #99D3DF;
 }
 
 h1{
@@ -15,7 +15,7 @@ footer p{
 }
 
 @media (min-width: 700px){
-	.header{
+	.header, .featureimage{
 		background-image: url('/static/blog/img/header.jpg');
 		height:600px;
 		width:100%;
@@ -30,7 +30,7 @@ footer p{
 }
 
 @media (max-width: 699px){
-	.header{
+	.header, .featureimage{
 		background-image: url('/static/blog/img/header_sm.jpg');
 		height: 250px;
 		width: 100%;
@@ -81,10 +81,11 @@ footer p{
 }
 
 .jumbotron{
-	background-color: #CDCDCD;
+	background-color: #88BBD6;
 	margin-left: 0 !important;
 	margin-right: 0 !important;
 }
+
 .postTitle{
 	font-family: 'Montserrat', sans-serif;
 	font-size: 2em;

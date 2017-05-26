@@ -5,32 +5,32 @@
 {% block content %}
 	<div class="container">
 		{% for post in post_list %}
-		{% if post.feature %}
-			<div class="post">
-				<table>
-					<tr>
-						<td>
-							<img src="{{ post.feature.url }}" alt="{{ post.title }} Featured Image" class="feature-image" />
-						</td>
-						<td>
-							<h1 class="post_title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-							<p class="post_info">
-							Published: {{ post.published_date|date:"M  d, Y" }} <br />
-							<a href="{% url 'post_detail' pk=post.pk %}" class="post_comment">Comments: {{ post.approve_comment.count }}</a>
-							</p>
-						</td>
-					</tr>
-				</table>
-			</div>
-		{% else %}
-			<div class="post">
-				<h1 class="post_title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-				<p class="post_info">
-				Published: {{ post.published_date|date:"M  d, Y" }} <br />
-				<a href="{% url 'post_detail' pk=post.pk %}" class="post_comment">Comments: {{ post.approve_comment.count }}</a>
-				</p>
-			</div>
-		{% endif %}
+			{% if post.feature %}
+				<div class="post">
+					<table>
+						<tr>
+							<td>
+								<img src="{{ post.feature.url }}" alt="{{ post.title }} Featured Image" class="feature-image" />
+							</td>
+							<td>
+								<h1 class="post_title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+								<p class="post_info">
+								Published: {{ post.published_date|date:"M  d, Y" }} <br />
+								<a href="{% url 'post_detail' pk=post.pk %}" class="post_comment">Comments: {{ post.approve_comment.count }}</a>
+								</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+			{% else %}
+				<div class="post">
+					<h1 class="post_title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+					<p class="post_info">
+					Published: {{ post.published_date|date:"M  d, Y" }} <br />
+					<a href="{% url 'post_detail' pk=post.pk %}" class="post_comment">Comments: {{ post.approve_comment.count }}</a>
+					</p>
+				</div>
+			{% endif %}
 		{% endfor %}
 	</div>
 {% endblock content %}

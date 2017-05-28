@@ -5,57 +5,57 @@
 	{{ post.title|title }}
 {% endblock titleblock %}
 {% block content %}
-	<!-- Feature image to display in banner across top -->
-	{% if post.feature %}
-		<div class="featureimage" style="background-image: url({{ post.feature.url }})"></div>
-	{% else %}
-		<div class="featureimage" style="background-image: url({% static 'blog/img/header.jpg' %})"></div>
-	{% endif %}
-	
-	<!-- Title/Author/Date content to display for each post -->
-	<h1 class="postTitle">{{ post.title|title }}</h1>
-	{# Add publish time if published or default to having a publish button #}
-	{% if post.published_date %}
-		<p class="date postdate">{{ post.published_date|localtime }}</p>
-	{% else %}
-		<a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-primary">Publish</a>
-	{% endif %}
+	<div class="container content">
+		<!-- Feature image to display in banner across top -->
+		{% if post.feature %}
+			<div class="featureimage" style="background-image: url({{ post.feature.url }})"></div>
+		{% else %}
+			<div class="featureimage" style="background-image: url({% static 'blog/img/header.jpg' %})"></div>
+		{% endif %}
+		<!-- Title/Author/Date content to display for each post -->
+		<h1 class="postTitle">{{ post.title|title }}</h1>
+		{# Add publish time if published or default to having a publish button #}
+		{% if post.published_date %}
+			<p class="date postdate">{{ post.published_date|localtime }}</p>
+		{% else %}
+			<a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-primary">Publish</a>
+		{% endif %}
 
-	<!-- Begin content section -->
-	<p class="postcontent">{{ post.text|safe|linebreaksbr }}</p>
-	{# Add edit and delete controls for authenticated user #}
-	{% if user.is_authenticated %}
-		<a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-primary"><i class="fa fa-pencil fa-lg pull-left" aria-hidden="true"></i>&nbsp;Edit</a>
-		<a href="{% url 'post_remove' pk=post.pk %}" class="btn btn-danger"><i class="fa fa-trash fa-lg pull-left" aria-hidden="true"></i>&nbsp;Delete</a>
-	{% endif %}
+		<!-- Begin content section -->
+		<p class="postcontent">{{ post.text|safe|linebreaksbr }}</p>
+		{# Add edit and delete controls for authenticated user #}
+		{% if user.is_authenticated %}
+			<a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-primary"><i class="fa fa-pencil fa-lg pull-left" aria-hidden="true"></i>&nbsp;Edit</a>
+			<a href="{% url 'post_remove' pk=post.pk %}" class="btn btn-danger"><i class="fa fa-trash fa-lg pull-left" aria-hidden="true"></i>&nbsp;Delete</a>
+		{% endif %}
 
-	<hr>
-	{% if post.published_date %}
-	<a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn btn-primary btn-comment">Add Comment</a>
-	<div class="container" id="comments">
-		{% for comment in post.comments.all %}
-			<br>
-			{% if user.is_authenticated or comment.approved_comment %}
-				<p>
-					{% if user.is_authenticated and not comment.approved_comment %}
-						<strong>Not Reviewed: <br></strong>
-					{% endif %}
-					{{ comment.create_date }}
-					{% if user.is_authenticated %}
-						<a href="{% url 'comment_remove' pk=comment.pk %}" class="btn btn-default"><i class="fa fa-times makered" aria-hidden="true"></i></a>
-						{% if not comment.approved_comment %}
-							<a href="{% url 'comment_approve' pk=comment.pk %}" class="btn btn-default"><i class="fa fa-check" aria-hidden="true"></i></a>
+		<hr>
+		{% if post.published_date %}
+		<a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn btn-primary btn-comment">Add Comment</a>
+		<div class="container" id="comments">
+			{% for comment in post.comments.all %}
+				<br>
+				{% if user.is_authenticated or comment.approved_comment %}
+					<p>
+						{% if user.is_authenticated and not comment.approved_comment %}
+							<strong>Not Reviewed: <br></strong>
 						{% endif %}
-					{% endif %}
-				</p>
-				<p>{{ comment.text|safe|linebreaks }}</p>
-				<p>Posted By: {{ comment.author }}</p>
+						{{ comment.create_date }}
+						{% if user.is_authenticated %}
+							<a href="{% url 'comment_remove' pk=comment.pk %}" class="btn btn-default"><i class="fa fa-times makered" aria-hidden="true"></i></a>
+							{% if not comment.approved_comment %}
+								<a href="{% url 'comment_approve' pk=comment.pk %}" class="btn btn-default"><i class="fa fa-check" aria-hidden="true"></i></a>
+							{% endif %}
+						{% endif %}
+					</p>
+					<p>{{ comment.text|safe|linebreaks }}</p>
+					<p>Posted By: {{ comment.author }}</p>
 
-			{% endif %}
-			{% empty %}
-			<p>No Comments</p>
-		{% endfor %}
+				{% endif %}
+				{% empty %}
+				<p>No Comments</p>
+			{% endfor %}
+		</div>
+		{% endif %}
 	</div>
-	{% endif %}
-
 {% endblock content %}

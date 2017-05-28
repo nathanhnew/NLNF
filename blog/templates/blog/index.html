@@ -40,11 +40,14 @@
 						<div class="post-thumb">
 							<a href="{% url 'post_detail' pk=post.pk %}">
 							{% if post.feature %}
-								<img src="{{ post.feature.url }}" alt="{{ post.title }}" class="img-thumbnail">
+								<img src="{{ post.feature.url }}" alt="{{ post.title }}" class="img-responsive">
 							{% else %}
-								<img src="{% static 'blog/img/header.jpg' %}" alt="{{ post.title }}" class="img-thumbnail">
+								<img src="{% static 'blog/img/header_na.jpg' %}" alt="{{ post.title }}" class="img-responsive">
 							{% endif %}
-							<p class="post-info-title">{{ post.title }}</p>
+								<div class="container"
+								<p class="index-post-info"><span class="index-post-title">{{ post.title }}</span><br>
+								<span class="index-post-comments"> Comments: {{ post.comments.count }}</span></p>
+								</div>
 							</a>
 						</div>
 					</div>		

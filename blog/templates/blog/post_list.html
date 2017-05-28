@@ -1,18 +1,23 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block titleblock %}
 	Posts
 {% endblock titleblock %}
 {% block content %}
-	<div class="container">
-		{% for post in post_list %}
-			{% if post.feature %}
-				<div class="post">
-					<table>
+	<div class="container content">
+		<div class="container">
+			<table class="post">
+				{% for post in post_list %}
+					<div class="post-thumb">
 						<tr>
-							<td>
+							<td class="postImage">
+							{% if post.feature %}
 								<img src="{{ post.feature.url }}" alt="{{ post.title }} Featured Image" class="feature-image" />
+							{% else %}
+								<img src="{% static 'blog/img/header_na.jpg' %}" alt="{{ post.title }} Featured Image" class="feature-image" />
+							{% endif %}
 							</td>
-							<td>
+							<td class="postDetail">
 								<h1 class="post_title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
 								<p class="post_info">
 								Published: {{ post.published_date|date:"M  d, Y" }} <br />
@@ -20,17 +25,9 @@
 								</p>
 							</td>
 						</tr>
-					</table>
-				</div>
-			{% else %}
-				<div class="post">
-					<h1 class="post_title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-					<p class="post_info">
-					Published: {{ post.published_date|date:"M  d, Y" }} <br />
-					<a href="{% url 'post_detail' pk=post.pk %}" class="post_comment">Comments: {{ post.approve_comment.count }}</a>
-					</p>
-				</div>
-			{% endif %}
-		{% endfor %}
+					</div>
+				{% endfor %}
+			</table>
+		</div>
 	</div>
 {% endblock content %}
